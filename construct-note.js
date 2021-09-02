@@ -13,15 +13,11 @@ function makeFrequencyCounter(string) {
 }
 
 function constructNote(message, letters) {
-    // Can the letters be removed to make a message, yes by deducting the value from letters
-    // iterate over message for each key, value pair comparing it with letters
-    // if exists in letters, if letters frequency is equal or greater than in message 
-    // return true otherwise return false.
     const messageFrequencyCounter = makeFrequencyCounter(message);
     const lettersFrequencyCounter = makeFrequencyCounter(letters);
 
     // Loops through the keys of message to compare with letters
-    for(key in message) {
+    for(key in messageFrequencyCounter) {
         // Retrieve key from letters, if key doesn't exist in letters return false
         if(!lettersFrequencyCounter[key]) return false;
         // Compare values between message and letters to check if there's enough or more letters 
@@ -32,3 +28,7 @@ function constructNote(message, letters) {
     // then return true.
     return true;
 }
+
+console.log(constructNote('aa', 'abc')) // false
+console.log(constructNote('abc', 'dcba')) // true
+console.log(constructNote('aabbcc', 'bcabcaddff')) // true
