@@ -22,7 +22,13 @@ function constructNote(message, letters) {
 
     // Loops through the keys of message to compare with letters
     for(key in message) {
-        // Retrieve key from letters
-        // Compare if the value that is retrieved is equal or greater
+        // Retrieve key from letters, if key doesn't exist in letters return false
+        if(!lettersFrequencyCounter[key]) return false;
+        // Compare values between message and letters to check if there's enough or more letters 
+        // to create the message
+        if(messageFrequencyCounter[key] > lettersFrequencyCounter[key]) return false;
     }
+    // If iterates through the whole message without error
+    // then return true.
+    return true;
 }
